@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00aaff, #005f99);
+            margin: 0;
+            padding: 0;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 900px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 55%;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #005f99;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .form-container form div {
+            width: 48%;
+            margin-bottom: 15px;
+        }
+
+        .form-container form input[type="text"],
+        .form-container form input[type="email"],
+        .form-container form input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-container form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #005f99;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-container form input[type="submit"]:hover {
+            background-color: #004080;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .top-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .top-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .top-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .image-container {
+            width: 40%;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-menu">
+        <a href="#about">About |</a>
+        <a href="#projects">Projects |</a>
+        <a href="#skills">Skills</a>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Registration Form</h2>
+            <form id="registrationForm">
+                <div>
+                    <input type="text" id="firstName" placeholder="First Name" required>
+                </div>
+                <div>
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                </div>
+                <div>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <div id="emailError" class="error"></div>
+                </div>
+                <div>
+                    <input type="tel" id="contact" placeholder="Your Contact" required>
+                </div>
+                <div style="width: 100%;">
+                    <input type="text" id="address" placeholder="Your Address" required>
+                </div>
+                <div style="width: 100%;">
+                    <input type="text" id="city" placeholder="City" required>
+                </div>
+                <input type="submit" value="Register">
+            </form>
+            <div id="successMessage" class="success"></div>
+        </div>
+
+        <div class="image-container">
+            <img src="l.jpg" alt="Image">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const successMessage = document.getElementById('successMessage');
+
+            // Simple email validation
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                emailError.textContent = "Invalid email";
+                return;
+            } else {
+                emailError.textContent = "";
+            }
+
+            // Display success message
+            successMessage.textContent = "Registration completed";
+        });
+    </script>
+
+</body>
+</html>
